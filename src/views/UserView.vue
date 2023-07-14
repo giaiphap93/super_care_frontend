@@ -3,6 +3,7 @@
     <div class="flex flex-col">
       <div class="overflow-x-auto">
         <div class="inline-block min-w-full">
+
           <div class="">
             <div
               :class="[expand ? 'left__col__expand' : 'left__col']"
@@ -10,6 +11,7 @@
             >
               <div v-show="expand">
                 <h1>All Users transition-all duration-500 ease-in-out fixed transition-all duration-500 ease-in-out fixed transition-all duration-500 ease-in-out fixed</h1>
+
               </div>
             </div>
             <div
@@ -90,6 +92,8 @@ export default {
 
 .right__col__expand {
   width: 85% !important;
+
   margin-left: 15% !important;
+
 }
 </style>
