@@ -4,6 +4,8 @@ import LoginView from '../views/LoginView.vue'
 import RegisterView from '../views/RegisterView'
 import PublicLayout from '../PublicLayout'
 import PrivateLayout from '../PrivateLayout'
+import UserView from '../views/UserView'
+import CalendarView from '../views/CalendarView'
 const routes = [
   {
     path: '/',
@@ -16,7 +18,11 @@ const routes = [
       },
       {
         path: 'users',
-        component: () => import(/* webpackChunkName: "uesrs" */ '../views/UserView.vue')
+        component: UserView
+      },
+      {
+        path: 'calendar',
+        component: CalendarView
       }
     ]
   },
