@@ -1,32 +1,32 @@
 <template>
   <div>
-    <div class="flex flex-col">
-      <div class="overflow-x-auto">
-        <div class="inline-block min-w-full">
+    <div class="t-flex t-flex-col">
+      <div class="t-overflow-x-auto">
+        <div class="t-inline-block t-min-w-full">
           <div class="">
             <div
               :class="[expand ? 'left__col__expand' : 'left__col']"
-              class="transition-all duration-500 ease-in-out fixed"
+              class="t-transition-all t-duration-500 t-ease-in-out t-fixed"
             >
               <div v-show="expand">
-                <h1>
+                <p>
                   All Users transition-all duration-500 ease-in-out fixed
                   transition-all duration-500 ease-in-out fixed transition-all
                   duration-500 ease-in-out fixed
-                </h1>
+                </p>
               </div>
             </div>
             <div
-              class="overflow-hidden transition-all duration-500 ease-in-out bg-gray-100"
+              class="t-overflow-hidden t-transition-all t-duration-500 t-ease-in-out t-bg-gray-100"
               :class="[expand ? 'right__col__expand' : 'right__col']"
             >
-              <button class="text-gray-400 p-4" @click="expand = !expand">
+              <a-button class="t-text-gray-400 t-p-4" @click="expand = !expand" type="text">
                 <left-circle-outlined
                   v-if="expand"
                   :style="{ fontSize: '24px' }"
                 />
                 <right-circle-outlined v-else :style="{ fontSize: '24px' }" />
-              </button>
+              </a-button>
               <a-table
                 :columns="columns"
                 :data-source="users"
@@ -61,19 +61,36 @@
       :style="{ right: '50px', bottom: '100px' }"
     >
       <template #icon>
-        <PlusOutlined/>
+        <PlusOutlined />
       </template>
       <a-float-button tooltip="Add New User">
         <template #icon>
-          <UserAddOutlined/>
+          <UserAddOutlined />
         </template>
       </a-float-button>
-      <a-float-button tooltip="Add New User Group">
+      <a-float-button tooltip="Add New User Group" @click="modal2Visible = true">
         <template #icon>
-         <FolderAddOutlined/>
+          <FolderAddOutlined />
         </template>
       </a-float-button>
     </a-float-button-group>
+  </div>
+  <div>
+    <a-modal
+      v-model:open="modal2Visible"
+      title="Vertically centered modal dialog"
+      centered
+      @ok="modal2Visible = false"
+    >
+      <a-form>
+        <a-form-item
+          label="Name"
+          :rules="[{ required: true, message: 'Please input Category Name!' }]"
+        >
+          <a-input v-model:value="formCategory.name" />
+        </a-form-item>
+      </a-form>
+    </a-modal>
   </div>
 </template>
 <script>
@@ -83,7 +100,7 @@ import {
   RightCircleOutlined,
   PlusOutlined,
   UserAddOutlined,
-  FolderAddOutlined
+  FolderAddOutlined,
 } from "@ant-design/icons-vue";
 
 export default {
@@ -93,12 +110,16 @@ export default {
     RightCircleOutlined,
     PlusOutlined,
     UserAddOutlined,
-    FolderAddOutlined
+    FolderAddOutlined,
   },
   data() {
     return {
       expand: true,
+      modal2Visible: false,
       users: [],
+      formCategory:{
+        name:''
+      },
       columns: [
         {
           title: "Id",

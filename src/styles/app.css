@@ -1,7 +1,166 @@
-body,html {
-    margin: 0;
-    padding: 0;
+body,
+html {
+  margin: 0;
+  padding: 0;
 }
 * {
-    box-sizing: border-box !important;
+  box-sizing: border-box !important;
+}
+a {
+    color: inherit;
+    text-decoration: inherit;
+}
+
+.t-flex {
+  display: flex;
+}
+
+.t-flex-wrap {
+  flex-wrap: wrap;
+}
+
+.t-w-full {
+  width: 100%;
+}
+
+.t-h-screen {
+  height: 100vh;
+}
+
+.t-ease-in-out {
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.t-duration-500 {
+  transition-duration: 500ms;
+}
+
+.t-transition-all {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.t-bg-white {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
+.t-rounded {
+  border-radius: 0.25rem;
+}
+
+.t-fixed {
+  position: fixed;
+}
+
+.p-3 {
+  padding: 0.75rem;
+}
+
+.t-border-gray-200 {
+  --tw-border-opacity: 1;
+  border-color: rgb(229 231 235 / var(--tw-border-opacity));
+}
+
+.t-border-solid {
+  border-style: solid;
+}
+
+.t-border-solid {
+  border-style: solid;
+}
+
+.t-border-b {
+  border-bottom-width: 1px;
+}
+
+.t-p-3 {
+  padding: 0.75rem;
+}
+
+.t-justify-center {
+  justify-content: center;
+}
+
+.t-items-center {
+  align-items: center;
+}
+
+.t-w-auto {
+  width: auto;
+}
+
+.t-h-10 {
+  height: 2.5rem;
+}
+
+.t-text-sm {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.t-text-gray-700 {
+  --tw-text-opacity: 1;
+  color: rgb(55 65 81 / var(--tw-text-opacity));
+}
+
+.t-font-medium {
+  font-weight: 500;
+}
+.t-p-2 {
+  padding: 0.5rem;
+}
+.t-rounded-md {
+  border-radius: 0.375rem;
+}
+
+.t-border-l {
+  border-left-width: 1px;
+}
+
+.t-border-b {
+  border-bottom-width: 1px;
+}
+
+.t-bg-gray-50 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(249 250 251 / var(--tw-bg-opacity));
+}
+
+.t-rounded-full {
+  border-radius: 9999px;
+}
+
+.t-flex-none {
+  flex: none;
+}
+
+.t-w-10 {
+  width: 2.5rem;
+}
+
+.t-h-10 {
+  height: 2.5rem;
+}
+.t-flex-col {
+    flex-direction: column;
+}
+.t-overflow-x-auto {
+    overflow-x: auto;
+}
+
+.t-min-w-full {
+    min-width: 100%;
+}
+
+.t-inline-block {
+    display: inline-block;
+}
+
+.t-overflow-hidden {
+    overflow: hidden;
+}
+.t-justify-between{
+    justify-content: space-between;
 }

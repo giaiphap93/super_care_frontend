@@ -7,9 +7,10 @@ import store from './store'
 import Antd from 'ant-design-vue';
 import { Button, message } from 'ant-design-vue';
 
-import 'ant-design-vue/dist/reset.css';
 
-import './styles/tailwind.css'
+
+//import './styles/tailwind.css'
+import 'ant-design-vue/dist/reset.css';
 import './styles/app.css'
 
 const app = createApp(App);
