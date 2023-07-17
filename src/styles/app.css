@@ -170,3 +170,19 @@ a {
 .t-text-grey{
   color: grey;
 }
+
+.t-py-10px{
+  padding: 10px 0 10px 0;
+}
+
+.t-pr-10{
+  padding-right: 10px;
+}
+
+.t-pl-10{
+  padding-left: 10px;
+}
+
+.t-ml-10{
+  margin-left: 10px;
+}
