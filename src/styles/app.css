@@ -7,7 +7,7 @@ html {
   box-sizing: border-box !important;
 }
 a {
-    color: inherit;
+    color: #1677ff !important;
     text-decoration: inherit;
 }
 
@@ -170,7 +170,9 @@ a {
 .t-text-grey{
   color: grey;
 }
-
+.t-text-center{
+  text-align: center;
+}
 .t-py-10px{
   padding: 10px 0 10px 0;
 }
