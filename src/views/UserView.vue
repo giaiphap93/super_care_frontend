@@ -20,7 +20,7 @@
               class="t-overflow-hidden t-transition-all t-duration-500 t-ease-in-out t-bg-gray-100"
               :class="[expand ? 'right__col__expand' : 'right__col']"
             >
-              <a-button class="t-text-gray-400 t-p-4" @click="expand = !expand" type="text">
+              <a-button class="t-text-grey t-p-4" @click="expand = !expand" type="text">
                 <left-circle-outlined
                   v-if="expand"
                   :style="{ fontSize: '24px' }"
