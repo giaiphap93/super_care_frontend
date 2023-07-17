@@ -14,14 +14,17 @@ const routes = [
     children:[
       {
         path: 'dashboard',
+        name:'nav_dashboard',
         component: HomeView
       },
       {
         path: 'users',
+        name:'nav_users',
         component: UserView
       },
       {
         path: 'calendar',
+        name:'nav_calendar',
         component: CalendarView
       }
     ]
@@ -32,11 +35,13 @@ const routes = [
     children: [
       {
         path: 'login',
+        name:'user_login',
         component: LoginView
         
       },
       {
         path: 'register',
+        name:'user_register',
         component: RegisterView
       }
     ]

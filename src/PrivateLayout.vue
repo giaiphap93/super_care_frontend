@@ -43,7 +43,7 @@
           <div :class="[expand ? 'header__top__expand' : 'header__top']"
             class="t-flex t-justify-between t-fixed t-bg-white t-border-b t-border-l right__header__top"
             style="padding: 8px !important; height: 65px !important">
-            <h1 class="text-2xl t-flex t-items-center t-justify-center">Users</h1>
+            <h1 class="text-2xl t-flex t-items-center t-justify-center">{{$t('user_view.title')}}</h1>
             <div>
               <span>
                 <img class="t-h-10 t-w-10 t-flex-none t-rounded-full t-bg-gray-50"
@@ -94,7 +94,7 @@ export default {
     };
   },
   mounted() {
-    console.log(process.env.VUE_APP_TITLE);
+    console.log(this.$route.name);
   },
 };
 </script>
