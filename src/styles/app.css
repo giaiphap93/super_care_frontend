@@ -164,3 +164,7 @@ a {
 .t-justify-between{
     justify-content: space-between;
 }
+
+.t-text-grey{
+  color: grey;
+}
