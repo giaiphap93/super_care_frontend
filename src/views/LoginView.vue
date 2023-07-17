@@ -1,48 +1,59 @@
 <template>
-  <div class="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
-    <div class="sm:mx-auto sm:w-full sm:max-w-sm">
-      <img class="mx-auto h-20 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" />
-      <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-        Sign in to your account
-      </h2>
-    </div>
+  <a-row>
+    <a-col :span="12" >
+      <div class="t-flex t-items-center t-justify-center t-w-full">
+        <img
+          class="t-h-10 t-w-auto"
+          src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png"
+        />
+      </div>
+      <h1 class="t-text-center">Login to account</h1>
+      <p class="t-text-center">New to [Abcxyz]? <router-link to="/users/register">Create your business</router-link></p>
+      <div class="t-flex t-items-center t-justify-center t-w-full">
+        <a-form
+          :model="loginForm"
+          name="basic"
+          :label-col="{ span: 8 }"
+          :wrapper-col="{ span: 16 }"
+          autocomplete="off"
+          @finish="onFinish"
+          @finishFailed="onFinishFailed"
+          class="login__form"
+        >
+          <a-form-item
+            label="Username"
+            name="username"
+            :rules="[
+              { required: true, message: 'Please input your username!' },
+            ]"
+          >
+            <a-input v-model:value="loginForm.username" />
+          </a-form-item>
 
-    <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-      <form class="space-y-6" @submit.prevent="login()">
-        <div>
-          <div class="mt-2">
-            <input placeholder="Email" id="email" name="email" type="email" v-model="loginForm.username"
-              autocomplete="email"
-              class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
-          </div>
-        </div>
+          <a-form-item
+            label="Password"
+            name="password"
+            :rules="[
+              { required: true, message: 'Please input your password!' },
+            ]"
+          >
+            <a-input-password v-model:value="loginForm.password" />
+          </a-form-item>
 
-        <div>
-          <div class="mt-2">
-            <input placeholder="Password" id="password" name="password" type="password" v-model="loginForm.password"
-              autocomplete="current-password"
-              class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
-            <div class="text-sm text-right">
-              <a href="#" class="font-semibold text-indigo-600 hover:text-indigo-500">Forgot password?</a>
-            </div>
-          </div>
-        </div>
+          <a-form-item name="remember" :wrapper-col="{ offset: 8, span: 16 }">
+            <a-checkbox v-model:checked="loginForm.remember"
+              >Remember me</a-checkbox
+            >
+          </a-form-item>
 
-        <div>
-          <button type="submit"
-            class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
-            Sign in
-          </button>
-        </div>
-      </form>
-
-      <p class="mt-10 text-center text-sm text-gray-500">
-        Not a member?
-        {{ " " }}
-        <router-link to="/users/register" class="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">Create your business</router-link>
-      </p>
-    </div>
-  </div>
+          <a-form-item :wrapper-col="{ offset: 8, span: 16 }">
+            <a-button type="primary" html-type="submit">Login</a-button>
+          </a-form-item>
+        </a-form>
+      </div>
+    </a-col>
+    <a-col :span="12">12</a-col>
+  </a-row>
 </template>
 <script>
 export default {
@@ -53,13 +64,25 @@ export default {
       loginForm: {
         username: "",
         password: "",
+        remember: true,
       },
     };
   },
   methods: {
     login() {
       alert(this.loginForm.username);
-    }
-  }
+    },
+    onFinish: (values) => {
+      console.log("Success:", values);
+    },
+    onFinishFailed: (errorInfo) => {
+      console.log("Failed:", errorInfo);
+    },
+  },
 };
 </script>
+<style scoped>
+.login__form {
+  max-width: 600px;
+}
+</style>
