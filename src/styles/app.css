@@ -7,7 +7,7 @@ html {
   box-sizing: border-box !important;
 }
 a {
-    color: #1677ff !important;
+    color: inherit;
     text-decoration: inherit;
 }
 
