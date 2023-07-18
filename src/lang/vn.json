@@ -3,5 +3,17 @@
     "regitser": {},
     "user_view":{
         "title":"Người dùng"
+    },
+    "login_view":{
+        "header":"Đăng Nhập",
+        "register_text":"Chưa có tài khoản {company}?",
+        "register_action_text":"Tạo mới doanh nghiệp",
+        "username":"Email",
+        "password":"Mật khẩu",
+        "remember_me":"Ghi nhớ đăng nhập",
+        "login_text":"Đăng nhập",
+        "username_required":"Vui lòng nhập Email!",
+        "password_required":"Vui lòng nhập Mật khẩu!"
+
     }
 }

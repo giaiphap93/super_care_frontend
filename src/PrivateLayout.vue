@@ -1,94 +1,88 @@
 <template>
-  <!-- component -->
-  <div>
-    <div class="t-flex t-flex-wrap t-w-full t-h-screen">
-      <div :class="[expand ? 'left__column__expand' : 'left__column']"
-        class="t-bg-white t-rounded t-shadow-lg t-transition-all t-duration-500 t-ease-in-out t-h-screen t-fixed siderbar">
-        <div class="t-p-3">
-          <div class="t-flex t-items-center t-justify-center" style="height: 40px !important">
-            <a-button type="text" size="large" class="t-text-grey"
-              style="padding: 8px !important; font-size: 18px !important" @click="expand = !expand">
-              <menu-fold-outlined v-if="expand" :style="{ fontSize: '24px' }" />
-              <menu-unfold-outlined v-else :style="{ fontSize: '24px' }" />
-
-            </a-button>
-            <div class="t-flex t-items-center t-justify-center t-w-full">
-              <img v-show="expand" class="t-h-10 t-w-auto"
-                src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png" />
-            </div>
-          </div>
-        </div>
-        <ul class="t-space-y-2 t-text-sm t-p-3">
-          <li v-for="(nav, i) in navs" :key="`nav-item-${i}`" class="list__nav">
-            <router-link :to="nav.to"
-              class="t-flex t-items-center t-space-x-3 t-text-gray-700 t-p-2 t-rounded-md nav__link">
-              <span class="t-text-gray-600" v-if="nav.key == 'dashboard'">
-                <pie-chart-outlined :style="{ fontSize: '24px' }" />
-              </span>
-              <span class="t-text-gray-600" v-if="nav.key == 'calendar'">
-                <calendar-outlined :style="{ fontSize: '24px' }" />
-              </span>
-              <span class="t-text-gray-600" v-if="nav.key == 'users'">
-                <user-outlined :style="{ fontSize: '24px' }" />
-              </span>
-              <span style="margin-left:10px" v-if="expand">{{ nav.text }}</span>
-            </router-link>
-          </li>
-        </ul>
-      </div>
-
-      <div :class="[expand ? 'right__column__expand' : 'right__column']"
-        class="t-transition-all t-duration-500 t-ease-in-out right__column_expand">
-        <div class="t-text-gray-600">
-          <div :class="[expand ? 'header__top__expand' : 'header__top']"
-            class="t-flex t-justify-between t-fixed t-bg-white t-border-b t-border-l right__header__top"
-            style="padding: 8px !important; height: 65px !important">
-            <h1 class="text-2xl t-flex t-items-center t-justify-center">{{$t('user_view.title')}}</h1>
-            <div>
-              <span>
-                <img class="t-h-10 t-w-10 t-flex-none t-rounded-full t-bg-gray-50"
-                  src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                  alt="" />
-              </span>
-            </div>
-          </div>
-          <div style="padding-top: 65px">
-            <router-view />
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+  <a-layout class="t-h-screen">
+    <a-layout-sider v-model:collapsed="collapsed" :trigger="null" collapsible>
+      <div class="logo" />
+      <a-menu
+        v-model:selectedKeys="selectedKeys"
+        mode="inline"
+        :inline-collapsed="collapsed"
+        :items="items"
+      >
+      </a-menu>
+    </a-layout-sider>
+    <a-layout>
+      <a-layout-header style="background: #fff; padding: 0">
+        <menu-unfold-outlined
+          v-if="collapsed"
+          class="trigger"
+          @click="() => (collapsed = !collapsed)"
+        />
+        <menu-fold-outlined
+          v-else
+          class="trigger"
+          @click="() => (collapsed = !collapsed)"
+        />
+      </a-layout-header>
+      <a-layout-content
+        :style="{
+          margin: '24px 16px',
+          padding: '24px',
+          background: '#fff',
+          minHeight: '280px',
+        }"
+      >
+        <router-view />
+      </a-layout-content>
+    </a-layout>
+  </a-layout>
 </template>
 <script>
+import { h } from "vue";
 import {
   PieChartOutlined,
-  UserOutlined,
+  //UserOutlined,
   CalendarOutlined,
   MenuFoldOutlined,
-  MenuUnfoldOutlined
+  MenuUnfoldOutlined,
 } from "@ant-design/icons-vue";
 export default {
   name: "PrivateLayout",
-  components: { PieChartOutlined, UserOutlined, CalendarOutlined, MenuFoldOutlined, MenuUnfoldOutlined },
+  components: {
+    //PieChartOutlined,
+    // UserOutlined,
+    //CalendarOutlined,
+    MenuFoldOutlined,
+    MenuUnfoldOutlined,
+  },
   data: () => {
     return {
-      expand: true,
-      navs: [
+      collapsed: true,
+      selectedKeys: ["1"],
+      items: [
         {
-          text: "Dashboard",
-          to: "/dashboard",
-          key: "dashboard",
+          key: "1",
+          icon: () => h(PieChartOutlined),
+          label: "Option 1",
+          title: "Option 1",
         },
         {
-          text: "Calendar",
-          to: "/calendar",
-          key: "calendar",
+          key: "2",
+          icon: () => h(CalendarOutlined),
+          label: "Option 2",
+          title: "Option 2",
         },
         {
-          text: "Users",
-          to: "/users",
-          key: "users",
+          key: "3",
+          icon: () => h(CalendarOutlined),
+          label: h(
+            "a",
+            {
+              href: "https://antdv.com",
+              target: "_blank",
+            },
+            "Navigation Four - Link"
+          ),
+          title: "Option 3",
         },
       ],
     };
@@ -128,20 +122,42 @@ export default {
 li.router-link-active:hover {
   background: #ccc;
 }
-.nav__link:hover{
+.nav__link:hover {
   background: #ccc;
 }
 .router-link-active {
   background: #ccc;
 }
-.list__nav{
-  margin-bottom: 10px;
+.list__nav {
+  margin-bottom: 5px;
 }
 
-.siderbar{
-border-right: 1px solid #ccc;
+.siderbar {
+  border-right: 1px solid #ccc;
 }
-.right__header__top{
+.right__header__top {
   border-bottom: 1px solid #ccc;
+}
+
+#app .trigger {
+  font-size: 18px;
+  line-height: 64px;
+  padding: 0 24px;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+#app .trigger:hover {
+  color: #1890ff;
+}
+
+#app .logo {
+  height: 32px;
+  background: rgba(255, 255, 255, 0.3);
+  margin: 16px;
+}
+
+.site-layout .site-layout-background {
+  background: #fff;
 }
 </style>

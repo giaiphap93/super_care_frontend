@@ -10,8 +10,17 @@ a {
     color: inherit;
     text-decoration: inherit;
 }
+body{
+  overflow: hidden;
+}
 
-
+/* div
+{
+  margin: 0;
+    padding: 0;
+    background-color: transparent;
+    text-align: left;
+} */
 
 .t-flex {
   display: flex;
