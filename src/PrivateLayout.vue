@@ -1,13 +1,15 @@
 <template>
   <a-layout class="t-h-screen">
-    <a-layout-sider v-model:collapsed="collapsed" :trigger="null" collapsible>
-      <div class="logo" />
-      <a-menu
-        v-model:selectedKeys="selectedKeys"
-        mode="inline"
-        :inline-collapsed="collapsed"
-        :items="items"
-      >
+    <a-layout-sider
+      :class="{ 't-ant-layout-sider': !collapsed }"
+      v-model:collapsed="collapsed"
+      :trigger="null"
+      collapsible
+      theme="light"
+    >
+      <div class="logo"></div>
+
+      <a-menu v-model:selectedKeys="selectedKeys" mode="inline" :items="items">
       </a-menu>
     </a-layout-sider>
     <a-layout>
@@ -25,7 +27,7 @@
       </a-layout-header>
       <a-layout-content
         :style="{
-          margin: '24px 16px',
+          margin: '16px',
           padding: '24px',
           background: '#fff',
           minHeight: '280px',
@@ -40,11 +42,12 @@
 import { h } from "vue";
 import {
   PieChartOutlined,
-  //UserOutlined,
+  UserOutlined,
   CalendarOutlined,
   MenuFoldOutlined,
   MenuUnfoldOutlined,
 } from "@ant-design/icons-vue";
+import LinkComponent from "./components/LinkComponent.vue";
 export default {
   name: "PrivateLayout",
   components: {
@@ -53,92 +56,39 @@ export default {
     //CalendarOutlined,
     MenuFoldOutlined,
     MenuUnfoldOutlined,
+    //HelloWorld
   },
   data: () => {
     return {
       collapsed: true,
       selectedKeys: ["1"],
+      selectedKeys2: ["1"],
       items: [
         {
           key: "1",
-          icon: () => h(PieChartOutlined),
-          label: "Option 1",
-          title: "Option 1",
+          icon: () => h(PieChartOutlined, { style: { fontSize: "24px" } }),
+          label: h(LinkComponent, { to: "/dashboard", text: "Dashboard" }),
+          title: "Dashboard",
         },
         {
           key: "2",
-          icon: () => h(CalendarOutlined),
-          label: "Option 2",
-          title: "Option 2",
+          icon: () => h(CalendarOutlined, { style: { fontSize: "24px" } }),
+          label: h(LinkComponent, { to: "/calendar", text: "Calendar" }),
+          title: "Calendar",
         },
         {
           key: "3",
-          icon: () => h(CalendarOutlined),
-          label: h(
-            "a",
-            {
-              href: "https://antdv.com",
-              target: "_blank",
-            },
-            "Navigation Four - Link"
-          ),
-          title: "Option 3",
+          icon: () => h(UserOutlined, { style: { fontSize: "24px" } }),
+          label: h(LinkComponent, { to: "/users", text: "Users" }),
+          title: "Users",
         },
       ],
     };
   },
-  mounted() {
-    console.log(this.$route.name);
-  },
+  mounted() {},
 };
 </script>
 <style scoped>
-.left__column {
-  width: 3% !important;
-}
-
-.right__column {
-  width: 99% !important;
-  padding-left: 3% !important;
-}
-
-.left__column__expand {
-  width: 15% !important;
-}
-
-.right__column__expand {
-  width: 99% !important;
-  padding-left: 15% !important;
-}
-
-.header__top {
-  width: 96% !important;
-}
-
-.header__top__expand {
-  width: 84% !important;
-}
-
-li.router-link-active:hover {
-  background: #ccc;
-}
-.nav__link:hover {
-  background: #ccc;
-}
-.router-link-active {
-  background: #ccc;
-}
-.list__nav {
-  margin-bottom: 5px;
-}
-
-.siderbar {
-  border-right: 1px solid #ccc;
-}
-.right__header__top {
-  border-bottom: 1px solid #ccc;
-}
-
 #app .trigger {
   font-size: 18px;
   line-height: 64px;
@@ -153,11 +103,14 @@ li.router-link-active:hover {
 
 #app .logo {
   height: 32px;
-  background: rgba(255, 255, 255, 0.3);
+  background: #ccc;
   margin: 16px;
 }
 
-.site-layout .site-layout-background {
-  background: #fff;
+.t-ant-layout-sider {
+  flex: 0 0 250px !important ;
+  max-width: 250px !important;
+  min-width: 250px !important;
+  width: 250px !important;
 }
 </style>
